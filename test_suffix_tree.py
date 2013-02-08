@@ -50,6 +50,16 @@ class SuffixTreeTestCase(unittest.TestCase):
         self.assertEqual(o_child_o.depth, 2)
         self.assertEqual(o_child_o.positions, set([2]))
 
+        # FIXME: Comprehensive testing is really called for here. Test every
+        # node in the tree.
+
+        lowest_null_parent = f_child_o.children['o']
+        lowest_null = lowest_null_parent.children['\0']
+        self.assertEqual(lowest_null.let, '\0')
+        self.assertEqual(lowest_null.parent, lowest_null_parent)
+        self.assertEqual(lowest_null.depth, 4)
+        self.assertEqual(lowest_null.positions, set([3]))
+
     def test_search(self):
         st = SuffixTree('This is a test')
         self.assertEqual(st.search('T'), [0])
