@@ -61,8 +61,12 @@ class SuffixTree(object):
             return let in [n.let for n in self.children.values()]
 
         def __repr__(self):
-            return "<Node at {i}>({l}, None)\t".format(
-                        i=str(id(n)), l=n.let)
+            return "<Node at {i}>('{l}', {pos}, {parent})\t".format(
+                i=str(id(self)),
+                l=self.let,
+                pos=str(self.positions),
+                parent=str(id(self.parent))
+            )
 
     class BreadthFirstIterator(object):
         def __init__(self, tree):
