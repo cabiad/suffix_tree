@@ -113,6 +113,20 @@ class SuffixTree(object):
 
         cur.add_child("\0", len(word) + _shift)
 
+    def search(self, q):
+        cur = self.root
+
+        for l in q:
+            try:
+                cur = cur.children[l]
+            except KeyError:
+                return None
+
+        # cur.positions is now set to the positions of the last character
+        # in the search string. The user probably wanted the positions of
+        # the first character of their query string, so shift it.
+        return map(lambda x: x - len(q) + 1, cur.positions)
+
     def get_rows(self):
         it = SuffixTree.BreadthFirstIterator(self)
         dep = 0

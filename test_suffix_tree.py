@@ -49,3 +49,11 @@ class SuffixTreeTestCase(unittest.TestCase):
         self.assertEqual(o_child_o.parent, o_item)
         self.assertEqual(o_child_o.depth, 2)
         self.assertEqual(o_child_o.positions, set([2]))
+
+    def test_search(self):
+        st = SuffixTree('This is a test')
+        self.assertEqual(st.search('T'), [0])
+        self.assertEqual(st.search('Th'), [0])
+        self.assertEqual(st.search('h'), [1])
+        self.assertEqual(st.search('is'), [2, 5])
+        self.assertEqual(st.search('qqqqq'), None)
