@@ -2,7 +2,10 @@
 # Copyright Christopher Abiad, 2013
 # All Rights Reserved
 ####################################
-"""Suffix trees are a data structure to store pre-processed bodies of
+"""Suffix tree implementation created for personal study and
+experimentation.
+
+Suffix trees are a data structure to store pre-processed bodies of
 text such that we can quickly determine all locations of an arbitrary
 query string within.
 
@@ -13,13 +16,18 @@ Suffix trees are related to to suffix arrays, which provide most of the
 same abilities but are more memory efficient.
 
 This implementation is inefficient, requiring both O(n**2) time and space
-to generate. O(n) space is achevable by storing the original string in
+to generate. It also makes some naive assumptions about the data,
+including that only a single letter will ever be passed and that the
+body of text we are indexing does not contain the character '\0'.
+
+O(n) space is achevable by storing the original string in
 an array and compressing non-branching parts of the tree to a single
 node. Clever algorithms exist for O(n) time as well, but these have not
-yet been implemented either.
+yet been implemented.
 """
 
 __author__ = 'Christopher Abiad'
+
 
 class SuffixTree(object):
 
