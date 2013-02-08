@@ -1,5 +1,5 @@
 ####################################
-# Copyright Christopher Abiad, 2012
+# Copyright Christopher Abiad, 2013
 # All Rights Reserved
 ####################################
 """Suffix trees are a data structure to store pre-processed bodies of
@@ -9,8 +9,8 @@ query string within.
 In short, suffix trees operate on the principal that any query string
 that exists within the body of text is the prefix of some suffix (!).
 
-Suffix trees may lead to suffix arrays, which provide most of the same
-abilities but are more memory efficient.
+Suffix trees are related to to suffix arrays, which provide most of the
+same abilities but are more memory efficient.
 
 This implementation is inefficient, requiring both O(n**2) time and space
 to generate. O(n) space is achevable by storing the original string in
