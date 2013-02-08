@@ -5,13 +5,14 @@ from suffix_tree import SuffixTree
 
 class SuffixTreeTestCase(unittest.TestCase):
     def test_init(self):
-        l = SuffixTree('foo')
-        rows = l.get_rows()
+        st = SuffixTree('foo')
+        rows = st.get_rows()
 
         self.assertEqual(len(rows), 5)  # root plus len(foo) + null term
         self.assertEqual(len(rows[0]), 1)  # The root level
         self.assertEqual(len(rows[1]), 3)  # 'f', 'o', and '\0'
-        self.assertEqual(len(rows[2]), 3)  # 'o' (of f), 'o' (of o), '\0' (of o)
+        self.assertEqual(len(rows[2]), 3)  # 'o' (of f), 'o' (of o),
+                                           # '\0' (of o)
         self.assertEqual(len(rows[3]), 2)  # 'o' (of o of f), '\0' (of o of o)
         self.assertEqual(len(rows[4]), 1)  # '\0' (of o)
 
@@ -35,10 +36,9 @@ class SuffixTreeTestCase(unittest.TestCase):
         self.assertEqual([item.parent for item in row1], 3 * [rows[0][0], ])
         self.assertEqual([item.depth for item in row1], [1, 1, 1])
         self.assertEqual([item.positions for item in row1],
-                         [set([0]), set([1,2]), set([3])])
+                         [set([0]), set([1, 2]), set([3])])
 
         f_child_o = f_item.children['o']
-
         self.assertEqual(f_child_o.let, 'o')
         self.assertEqual(f_child_o.parent, f_item)
         self.assertEqual(f_child_o.depth, 2)

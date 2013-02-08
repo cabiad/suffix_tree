@@ -37,7 +37,7 @@ class SuffixTree(object):
 
             if strpos is not None:
                 strpos = int(strpos)
-            self.positions = set((strpos, ))
+            self.positions = set([strpos, ])
 
             self.parent = parent
             if parent is None:
