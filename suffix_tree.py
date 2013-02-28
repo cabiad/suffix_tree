@@ -12,7 +12,7 @@ query string within.
 In short, suffix trees operate on the principal that any query string
 that exists within the body of text is the prefix of some suffix (!).
 
-Suffix trees are related to to suffix arrays, which provide most of the
+Suffix trees are related to suffix arrays, which provide most of the
 same abilities but are more memory efficient.
 
 This implementation is inefficient, requiring both O(n**2) time and space
